@@ -7,8 +7,8 @@
 <h3 align="center">A simple Discord chatbot</h3>
 
 <p align="center">
-    <img src="https://img.shields.io/github/v/release/BR88C/andrew?include_prereleases&style=for-the-badge&color=d65cff">
-    <img src="https://img.shields.io/github/license/BR88C/andrew?style=for-the-badge&color=fbedff">
+    <img src="https://img.shields.io/github/v/release/BR88C/andrew?include_prereleases&style=for-the-badge&color=ffa836">
+    <img src="https://img.shields.io/github/license/BR88C/andrew?style=for-the-badge&color=ffefc4">
 </p>
 
 ---
