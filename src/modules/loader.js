@@ -12,7 +12,7 @@ const loader = {
     /* Initiate DB */
     async initDB (client) {
         MongoClient.connect(mongoConfig.url, (error, db) => {
-            if (error) throw error;
+            if (error) return log(error, `red`);
             client.db = db;
             log(`Connected to the DB!`, `green`);
         });
