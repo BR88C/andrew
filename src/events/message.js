@@ -1,17 +1,21 @@
-/* When a message is recieved, log it with the appropriate formatting, check if
+/* When a message is recieved, log it with the appropriate formatting, respond with a chatbot response if it is in a chatbot channel, check if
 it's a command, look for arguments, check for flags on the commands, then run it */
 
 const Discord = require(`discord.js-light`);
+const chatbot = require(`../modules/chatbot.js`);
 const log = require(`../modules/log.js`);
 
-module.exports = (client, message) => {
+module.exports = async (client, message) => {
     // If the Message is by Andrew!
     if (message.author.bot && message.author.id === client.user.id) {
         return log(message.content, `magenta`, message, { server: true, user: true, regex: true });
 
     // If the message is by another bot or it does not contain the prefix
     } else if (message.author.bot || message.content.toLowerCase().indexOf(client.config.prefix.toLowerCase()) !== 0) {
-        log(message.content, `white`, message, { server: true, user: true, regex: true });
+        if (client.config.channels.includes(message.channel.id.toString())) {
+            log(message.content, `white`, message, { server: true, user: true, regex: true });
+            message.channel.send(await chatbot(message));
+        }
         return;
     }
 

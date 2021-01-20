@@ -1,5 +1,9 @@
 const config = {
     prefix: `a!`,
+    channels: [`801550133569388615`],
+    chatbot: {
+        gender: `male`
+    },
     devs: {
         ids: [`342275771546599425`],
         tags: [`BR88C#0001`]
