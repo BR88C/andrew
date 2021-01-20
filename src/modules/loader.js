@@ -3,10 +3,21 @@
 const Discord = require(`discord.js-light`);
 const fs = require(`fs`);
 const DBL = require(`dblapi.js`);
+const MongoClient = require('mongodb').MongoClient;
+const mongoConfig = require(`../config/mongoConfig.js`);
 const log = require(`./log.js`);
 const logHeader = require(`../utils/logHeader.js`);
 
 const loader = {
+    /* Initiate DB */
+    async initDB (client) {
+        MongoClient.connect(mongoConfig.url, (error, db) => {
+            if (error) throw error;
+            client.db = db;
+            log(`Connected to the DB!`, `green`);
+        });
+    },
+
     /* Load variables and save on client */
     async loadVariables (client) {
         if (process.env.DBL_TOKEN) {
@@ -53,6 +64,7 @@ const loader = {
     /* Run all methods */
     async start (client) {
         logHeader();
+        await this.initDB(client);
         await this.loadVariables(client);
         await this.loadEvents(client);
         await this.loadCommands(client);

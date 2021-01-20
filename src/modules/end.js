@@ -13,6 +13,11 @@ module.exports = async (client, setDND, message) => {
         }).catch(error => log(error, `red`));
     }
 
+    if (client.db) {
+        client.db.close();
+        log(`\nDisconnected from the DB.`, `red`);
+    }
+
     if (message) log(`\n${message}`, `red`);
     log(`\nStopped. Bot Offline.`, `red`);
     log(``, `white`);
