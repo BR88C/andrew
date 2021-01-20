@@ -1,7 +1,7 @@
 {
   "name": "andrew",
   "version": "0.1.0",
-  "description": "A discord chatbot",
+  "description": "A simple Discord chatbot",
   "main": "index.js",
   "scripts": {
     "start": "node ./src/index.js",
