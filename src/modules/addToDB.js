@@ -1,6 +1,6 @@
 /* Function to add a guild config to the DB */
 
-const mongoConfig = require("../config/mongoConfig.js");
+const mongoConfig = require(`../config/mongoConfig.js`);
 const log = require(`../modules/log.js`);
 
 let addToDB = async (message) => {

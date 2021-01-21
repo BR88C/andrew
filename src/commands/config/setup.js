@@ -77,7 +77,6 @@ module.exports = {
                             return await msgA.delete();
                         });
                     });
-
                 }
 
             }).catch(async error => {
