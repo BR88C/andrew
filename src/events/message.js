@@ -14,7 +14,7 @@ module.exports = async (client, message) => {
     } else if (message.author.bot || message.content.toLowerCase().indexOf(client.config.prefix.toLowerCase()) !== 0) {
         message.client.db.db(mongoConfig.dbName).collection(mongoConfig.collectionName).findOne({
             guildID: entry.guildID
-        }).then(dbEntry => {
+        }).then(async dbEntry => {
             if (dbEntry && dbEntry.channelID == message.channel.id) {
                 log(message.content, `white`, message, { server: true, user: true, regex: true });
                 message.channel.send(await chatbot(message));
