@@ -28,7 +28,7 @@ let chatbot = async (message, type) => {
         trainingData.push(message.content);
 
         let markov = new Markov({
-            stateSize: 1
+            stateSize: randomInt(1, 2)
         })
 
         markov.addData(trainingData);
