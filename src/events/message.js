@@ -12,11 +12,16 @@ module.exports = async (client, message) => {
 
     // If the message is by another bot or it does not contain the prefix
     } else if (message.author.bot || message.content.toLowerCase().indexOf(client.config.prefix.toLowerCase()) !== 0) {
-        if (client.config.channels.includes(message.channel.id.toString())) {
-            log(message.content, `white`, message, { server: true, user: true, regex: true });
-            message.channel.send(await chatbot(message));
-        }
-        return;
+        message.client.db.db(mongoConfig.dbName).collection(mongoConfig.collectionName).findOne({
+            guildID: entry.guildID
+        }).then(dbEntry => {
+            if (dbEntry && dbEntry.channelID == message.channel.id) {
+                log(message.content, `white`, message, { server: true, user: true, regex: true });
+                message.channel.send(await chatbot(message));
+            }
+
+            return;
+        });
     }
 
 

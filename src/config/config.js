@@ -1,8 +1,8 @@
 const config = {
     prefix: `a!`,
-    channels: [`801550133569388615`],
     chatbot: {
-        gender: `male`
+        gender: `male`,
+        name: `Andrew`
     },
     devs: {
         ids: [`342275771546599425`],
