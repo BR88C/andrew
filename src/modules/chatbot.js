@@ -37,7 +37,7 @@ let chatbot = async (message, type) => {
             maxTries: Infinity,
             prng: Math.random,
             filter: (result) => {
-                return result.string.split(' ').length >= randomInt(7, 20)
+                return result.string.length >= randomInt(20, 40)
             }
         };
 
