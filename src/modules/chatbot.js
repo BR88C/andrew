@@ -6,6 +6,7 @@ const markovData = require(`../config/markovData.js`);
 const config = require(`../config/config.js`);
 const log = require(`../modules/log.js`);
 const randomInt = require(`../utils/randomInt.js`);
+const shuffleArray = require(`../utils/shuffleArray.js`);
 
 let chatbot = async (message, type) => {
     if (type === 0) {
@@ -23,7 +24,7 @@ let chatbot = async (message, type) => {
 
         return resJSON.message.length === 0 ? `An unknown error occured.` : resJSON.message
     } else if (type === 1) {
-        let trainingData = markovData
+        let trainingData = shuffleArray(markovData);
         trainingData.push(message.content);
 
         let markov = new Markov({
@@ -33,10 +34,10 @@ let chatbot = async (message, type) => {
         markov.addData(trainingData);
 
         let options = {
-            maxTries: 25,
+            maxTries: Infinity,
             prng: Math.random,
             filter: (result) => {
-                return result.string.split(' ').length >= randomInt(5, 15)
+                return result.string.split(' ').length >= randomInt(10, 20)
             }
         };
 
