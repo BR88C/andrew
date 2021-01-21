@@ -33,8 +33,11 @@ let chatbot = async (message, type) => {
         markov.addData(trainingData);
 
         let options = {
-            maxTries: 15,
+            maxTries: 25,
             prng: Math.random,
+            filter: (result) => {
+                return result.string.split(' ').length >= randomInt(5, 15)
+            }
         };
 
         let res = markov.generate(options);
