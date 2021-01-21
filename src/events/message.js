@@ -20,9 +20,9 @@ module.exports = async (client, message) => {
                 log(message.content, `white`, message, { server: true, user: true, regex: true });
                 message.channel.send(await chatbot(message));
             }
-
-            return;
         });
+
+        return;
     }
 
 
