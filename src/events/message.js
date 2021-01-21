@@ -18,7 +18,7 @@ module.exports = async (client, message) => {
         }).then(async dbEntry => {
             if (dbEntry && dbEntry.channelID == message.channel.id) {
                 log(message.content, `white`, message, { server: true, user: true, regex: true });
-                message.channel.send(await chatbot(message));
+                message.channel.send(await chatbot(message, dbEntry.type));
             }
         });
 
