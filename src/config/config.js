@@ -1,5 +1,5 @@
 const config = {
-    prefix: `-`,
+    prefix: `a!`,
     chatbot: {
         gender: `male`,
         name: `Andrew`
