@@ -2,6 +2,7 @@
 it's a command, look for arguments, check for flags on the commands, then run it */
 
 const Discord = require(`discord.js-light`);
+const mongoConfig = require(`../config/mongoConfig.js`);
 const chatbot = require(`../modules/chatbot.js`);
 const log = require(`../modules/log.js`);
 
