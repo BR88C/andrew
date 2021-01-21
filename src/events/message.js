@@ -8,11 +8,11 @@ const log = require(`../modules/log.js`);
 
 module.exports = async (client, message) => {
     // If the Message is by Andrew!
-    if (message.author.bot && message.author.id === client.user.id) {
+    if (message.author.id === client.user.id) {
         return log(message.content, `magenta`, message, { server: true, user: true, regex: true });
 
     // If the message is by another bot or it does not contain the prefix
-    } else if (message.author.bot || message.content.toLowerCase().indexOf(client.config.prefix.toLowerCase()) !== 0) {
+    } else if (!message.author.bot && message.content.toLowerCase().indexOf(client.config.prefix.toLowerCase()) !== 0) {
         message.client.db.db(mongoConfig.dbName).collection(mongoConfig.collectionName).findOne({
             guildID: message.guild.id
         }).then(async dbEntry => {
@@ -23,7 +23,7 @@ module.exports = async (client, message) => {
         });
 
         return;
-    }
+    } else if (message.author.bot) return;
 
 
 
