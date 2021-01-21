@@ -1,5 +1,5 @@
 const config = {
-    prefix: `a!`,
+    prefix: `-`,
     chatbot: {
         gender: `male`,
         name: `Andrew`
@@ -15,7 +15,9 @@ const config = {
         website: `[No website]`
     },
     emojiGuild: `738892660663910450`,
-    emojis: {}
+    emojis: {
+        agony: `800755063664410624`
+    }
 };
 
 module.exports = config;

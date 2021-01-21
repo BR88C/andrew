@@ -4,7 +4,9 @@ const fetch = require(`node-fetch`);
 const config = require(`../config/config.js`);
 const log = require(`../modules/log.js`);
 
-let chatbot = async (message) => {
+let chatbot = async (message, type) => {
+    console.log(type)
+
     let requestURL = `https://api.udit.gq/api/chatbot?message=${encodeURIComponent(message)}&name=${config.chatbot.name}&gender=${config.chatbot.gender}`;
 
     let res = await fetch(requestURL).catch(error => {
