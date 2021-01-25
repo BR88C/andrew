@@ -22,7 +22,7 @@ module.exports = {
             .setDescription(`Setting up Andrew allows you to use his chatbot feature. Run this command in the channel you wish to use as his chatbot channel. **If this channel is the channel you wish to use, sect the :white_check_mark: !**`);
 
         let acceptEmbed = new Discord.MessageEmbed()
-            .setTitle(`Accept data usage`)
+            .setTitle(`Agreement`)
             .setDescription(`By selecting :white_check_mark: , you are agreeing to have your server's ID and chatbot channel ID stored to Andrew's database. This is required as it allows Andrew to identify what channel to reply to messages in in your server. If you are unaware of what discord IDs are, they are given to every channel, user, message, etc as a way of identifying them. They do not include any information about messages, users, or other channels/servers. Andrew also *does not* save any messages.`)
 
         let typeEmbed = new Discord.MessageEmbed()
