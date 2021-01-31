@@ -4,7 +4,7 @@ const fetch = require(`node-fetch`);
 const Markov = require(`markov-strings`).default
 const markovData = require(`../config/markovData.js`);
 const config = require(`../config/config.js`);
-const log = require(`../modules/log.js`);
+const log = require(`./log.js`);
 const randomInt = require(`../utils/randomInt.js`);
 const shuffleArray = require(`../utils/shuffleArray.js`);
 
@@ -34,16 +34,26 @@ let chatbot = async (message, type) => {
         markov.addData(trainingData);
 
         let options = {
-            maxTries: Infinity,
+            maxTries: 15,
             prng: Math.random,
             filter: (result) => {
-                return result.string.length >= randomInt(20, 40)
+                return result.string.length >= randomInt(39, 40)
             }
         };
 
-        let res = markov.generate(options);
+        let generateString = () => {
+            let res = ``;
+            try {
+                res = markov.generate(options).string;
+            } catch (error) {
+                return generateString();
+            }
+            return res;
+        }
 
-        return res.string.length === 0 ? `An unknown error occured.` : res.string;
+        let res = generateString()
+
+        return res.length === 0 ? `An unknown error occured.` : res;
     }
 };
 
