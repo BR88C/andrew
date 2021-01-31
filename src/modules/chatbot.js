@@ -51,7 +51,7 @@ let chatbot = async (message, type) => {
             return res;
         }
 
-        let res = generateString()
+        let res = generateString();
 
         return res.length === 0 ? `An unknown error occured.` : res;
     }
